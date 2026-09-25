@@ -25,14 +25,32 @@ NTP防偏移和TTL
 去网页，防火墙，自定义规则粘贴 (注：我的局域网是192.168.2.0）
 
 #DNS
+
+
 iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 53
+
+
 iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 53
+
+
 #NTP防偏移
+
+
 iptables -t nat -N ntp_force_local
+
+
 iptables -t nat -I PREROUTING -p udp --dport 123 -j ntp_force_local
+
+
 iptables -t nat -A ntp_force_local -d 0.0.0.0/8 -j RETURN
+
+
 iptables -t nat -A ntp_force_local -d 127.0.0.0/8 -j RETURN
+
+
 iptables -t nat -A ntp_force_local -d 192.168.0.0/16 -j RETURN
+
+
 iptables -t nat -A ntp_force_local -s 192.168.0.0/16 -j DNAT --to-destination 192.168.2.1
 #伪装TTL为电脑。（128是电脑，64是手机设备）
 iptables -t mangle -A POSTROUTING -j TTL --ttl-set 64
