@@ -1,0 +1,19 @@
+#!/bin/sh /etc/rc.common
+START=99
+
+start() {
+    sleep 30
+    /root/autologin.sh
+    while true; do
+        ping -c1 -W2 223.5.5.5 >/dev/null 2>&1
+        if [ $? -ne 0 ]; then
+            /root/login.sh
+        fi
+        sleep 30
+    done &
+}
+
+stop() {
+    killall autologin.sh
+    killall -9 sleep
+}
