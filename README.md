@@ -1,10 +1,12 @@
-安徽邮电自动认证脚本+openwrt屏蔽检测多设备和时间戳,TTL
+##### 安徽邮电自动认证脚本+openwrt屏蔽检测多设备和时间戳,TTL
 
 
 推荐使用的是[openwrt.ai](https://openwrt.ai/) 编译的openwrt，加入下面这些ipk后编译
 
 
 ua2f luci-app-ua2f iptables-mod-nat-extra iptables-nft ip6tables-nft iptables-mod-conntrack-extra iptables-mod-filter iptables-mod-u32 iptables-mod-ipopt kmod-ipt-u32 kmod-ipt-ipopt kmod-ipt-filter kmod-ipt-nat-extra kmod-ipt-conntrack-extra
+
+!!!!!wan口名字要改成正常设备名字，例如下面的TTL是128，就改一个电脑名字，64以此类推，路由器尽量选择mt7621以上的
 
 UA2F
 
