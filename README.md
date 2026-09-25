@@ -11,13 +11,14 @@ UA2F
 编译时不要勾选turboacc,或者在网页关闭
 
 UA2F勾选启用，处理 443 端口的 HTTP 流量，自动设置防火墙规则
+![](Screenshot/ua2f.png)
 
 
 然后打开手机连接WiFi测试打开
 
 
 http://ua.233996.xyz
-
+![测试](Screenshot/im.png)
 
 如果网页服务器端User-Agent显示FFFFFF，则为成功
 
