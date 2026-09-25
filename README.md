@@ -1,12 +1,24 @@
 安徽邮电职业技术学院自动认证脚本+openwrt屏蔽检测多设备和时间戳,TTL
+
+
 推荐使用的是openwrt.ai编译的openwrt，加入下面这些ipk后编译
+
+
 ua2f luci-app-ua2f iptables-mod-nat-extra iptables-nft ip6tables-nft iptables-mod-conntrack-extra iptables-mod-filter iptables-mod-u32 iptables-mod-ipopt kmod-ipt-u32 kmod-ipt-ipopt kmod-ipt-filter kmod-ipt-nat-extra kmod-ipt-conntrack-extra
 
 UA2F
+
 编译时不要勾选turboacc,或者在网页关闭
+
 UA2F勾选启用，处理 443 端口的 HTTP 流量，自动设置防火墙规则
+
+
 然后打开手机连接WiFi测试打开
+
+
 http://ua.233996.xyz
+
+
 如果网页服务器端User-Agent显示FFFFFF，则为成功
 
 NTP防偏移和TTL
