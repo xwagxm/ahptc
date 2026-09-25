@@ -5,7 +5,9 @@ ua2f luci-app-ua2f iptables-mod-nat-extra iptables-nft ip6tables-nft iptables-mo
 UA2F
 编译时不要勾选turboacc,或者在网页关闭
 UA2F勾选启用，处理 443 端口的 HTTP 流量，自动设置防火墙规则
-然后打开手机连接WiFi测试，打开http://ua.233996.xyz，如果网页服务器端User-Agent显示FFFFFF，则为成功
+然后打开手机连接WiFi测试打开
+http://ua.233996.xyz
+如果网页服务器端User-Agent显示FFFFFF，则为成功
 
 NTP防偏移和TTL
 去网页，防火墙，自定义规则粘贴 (注：我的局域网是192.168.2.0）
