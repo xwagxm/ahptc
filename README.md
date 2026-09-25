@@ -28,11 +28,6 @@ iptables -t mangle -A POSTROUTING -j TTL --ttl-set 64
 在root目录下创建login.sh,(可以使用TTYD，也可以使用ssh工具）
 编辑login.sh
 
-#!/bin/sh
-ACCOUNT="user%40telecom"
-UPASS="password"
-curl -s "http://172.16.254.3/drcom/login?callback=dr1003&DDDDD=${ACCOUNT}&upass=${UPASS}&0MKKey=123456&R1=0&R2=&R3=0&R6=0&para=00&v6ip=&terminal_type=1&lang=zh-cn&jsVersion=4.2&v=5337&lang=zh"
-
 user换成你的账号，password换成你的密码，再给login.sh加一个最高权限
 chmod 700 login.sh 
 保存后可以运行一下在ping看能不能ping通外网
@@ -40,26 +35,6 @@ chmod 700 login.sh
 
 在init.d目录下在创建一个服务文件
 touch /etc/init.d/autologin
-
-#!/bin/sh /etc/rc.common
-START=99
-
-start() {
-    sleep 30
-    /root/autologin.sh
-    while true; do
-        ping -c1 -W2 223.5.5.5 >/dev/null 2>&1
-        if [ $? -ne 0 ]; then
-            /root/login.sh
-        fi
-        sleep 30
-    done &
-}
-
-stop() {
-    killall autologin.sh
-    killall -9 sleep
-}
 
 主要就是路由器启动后延迟30秒在执行，然后ping阿里dns，如果超时就会触发重新认证脚本
 在赋予权限和开机自动运行
