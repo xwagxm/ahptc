@@ -26,7 +26,6 @@ NTP防偏移和TTL
 
 #DNS
 
-
 iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 53
 
 
@@ -34,7 +33,6 @@ iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 53
 
 
 #NTP防偏移
-
 
 iptables -t nat -N ntp_force_local
 
@@ -52,24 +50,41 @@ iptables -t nat -A ntp_force_local -d 192.168.0.0/16 -j RETURN
 
 
 iptables -t nat -A ntp_force_local -s 192.168.0.0/16 -j DNAT --to-destination 192.168.2.1
+
+
 #伪装TTL为电脑。（128是电脑，64是手机设备）
+
 iptables -t mangle -A POSTROUTING -j TTL --ttl-set 64
 
 
 自动认证脚本
+
 在root目录下创建login.sh,(可以使用TTYD，也可以使用ssh工具）
+
 编辑login.sh
 
 user换成你的账号，password换成你的密码，再给login.sh加一个最高权限
+
+
 chmod 700 login.sh 
+
+
 保存后可以运行一下在ping看能不能ping通外网
 
 
 在init.d目录下在创建一个服务文件
+
+
 touch /etc/init.d/autologin
 
+
 主要就是路由器启动后延迟30秒在执行，然后ping阿里dns，如果超时就会触发重新认证脚本
+
 在赋予权限和开机自动运行
+
+
 chmod +x /etc/init.d/autologin
+
+
 /etc/init.d/autologin enable
 
