@@ -1,4 +1,4 @@
-安徽邮电职业技术学院自动认证脚本+openwrt屏蔽检测多设备和时间戳,TTL
+安徽邮电自动认证脚本+openwrt屏蔽检测多设备和时间戳,TTL
 
 
 推荐使用的是[openwrt.ai](https://openwrt.ai/) 编译的openwrt，加入下面这些ipk后编译
@@ -23,7 +23,7 @@ http://ua.233996.xyz
 如果网页服务器端User-Agent显示FFFFFF，则为成功
 
 NTP防偏移和TTL
-去网页，防火墙，自定义规则粘贴 (注：我的局域网是192.168.2.0）
+去网页，防火墙，自定义规则粘贴 （注：我的局域网是192.168.2.0）
 
 #DNS
 
@@ -60,7 +60,7 @@ iptables -t mangle -A POSTROUTING -j TTL --ttl-set 64
 
 自动认证脚本
 
-在root目录下创建login.sh,(可以使用TTYD，也可以使用ssh工具）
+在root目录下创建login.sh,（可以使用TTYD，也可以使用ssh工具）
 
 编辑login.sh
 
